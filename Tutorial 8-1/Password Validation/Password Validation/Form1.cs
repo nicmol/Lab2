@@ -15,6 +15,12 @@ namespace Password_Validation
         {
             InitializeComponent();
         }
+        /*Algorithm
+         * parse(get) the password
+         * looking for uppercase, lowercase, numeric characters
+         * methods to parse these 3 scenarios
+         * check the strings length- using the length property*/
+         
 
         // The NumberUpperCase method accepts a string argument
         // and returns the number of uppercase letters it contains.
@@ -25,7 +31,13 @@ namespace Password_Validation
             // Count the uppercase characters in str.
             // look at each individual character in the str 
             // and increment the count if that char is uppercase
-
+            foreach(char ch in str)
+            {
+                if (char.IsUpper(ch))
+                {
+                    upperCase++;
+                }
+            }
             // Return the number of uppercase characters.
             return upperCase;
         }
@@ -37,7 +49,13 @@ namespace Password_Validation
             int lowerCase = 0;  // The number of lowercase letters
 
             // Count the lowercase characters in str.
-
+            foreach (char ch in str)
+            {
+                if (char.IsLower(ch))
+                {
+                    lowerCase++;
+                }
+            }
 
             // Return the number of lowercase characters.
             return lowerCase;
@@ -50,7 +68,13 @@ namespace Password_Validation
             int digits = 0;  // The number of digits
 
             // Count the digits in str.
-
+            foreach (char ch in str)
+            {
+                if (char.IsDigit(ch))
+                {
+                    digits++;
+                }
+            }
 
             // Return the number of digits.
             return digits;
@@ -64,7 +88,10 @@ namespace Password_Validation
             string password = passwordTextBox.Text;
 
             // Validate the password.
-            if (true)
+            if (password.Length>=MIN_LENGTH &&
+                NumberUpperCase(password)>=1 &&
+                NumberLowerCase(password)>=1 &&
+                NumberDigits(password)>=1)
             {
                 MessageBox.Show("The password is valid.");
             }
